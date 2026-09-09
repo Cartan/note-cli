@@ -23,6 +23,16 @@ namespace note_cli
                 return hash;
             }
         }
+        public int List()
+        {
+            int count = 0;
+            foreach (string file in _fileOperations.EnumerateFiles())
+            {
+                count++;
+                Console.WriteLine(file);
+            }
+            return count;
+        }
     }
 }
 
