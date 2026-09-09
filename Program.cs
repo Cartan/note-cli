@@ -27,6 +27,7 @@ namespace note_cli
             switch (args[0])
             {
                 case "add":
+                {
                     if (args.Length < 2)
                     {
                         Console.WriteLine("Error: Missing content for the note.");
@@ -37,15 +38,40 @@ namespace note_cli
                     string hash = notes.Add(content);
                     Console.WriteLine($"Note added with hash: {hash}");
                     break;
+                }
 
                 case "list":
+                {
                     int count = notes.List();
                     Console.WriteLine($"Total notes: {count}");
                     break;
+                }
+                case "delete":
+                {
+                    if (args.Length < 2)
+                    {
+                        Console.WriteLine("Error: Missing hash for the note to delete.");
+                        return;
+                    }
+
+                    string hash = args[1];
+                    bool deleted = notes.Delete(hash);
+                    if (deleted)
+                    {
+                        Console.WriteLine($"Note with hash '{hash}' deleted.");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Error: Note with hash '{hash}' not found.");
+                    }
+                    break;
+                }
 
                 default:
+                {
                     Console.WriteLine($"Error: Unknown command '{args[0]}'.");
                     break;
+                }
             }
         }
     }

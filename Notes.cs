@@ -33,6 +33,19 @@ namespace note_cli
             }
             return count;
         }
+        public bool Delete(string hash)
+        {
+            if (_fileOperations.FileExists(hash))
+            {
+                _fileOperations.DeleteFile(hash);
+                return true;
+            }
+            else
+            {
+                Console.WriteLine($"Error: Note with hash '{hash}' does not exist.");
+                return false;
+            }
+        }
     }
 }
 

@@ -11,6 +11,7 @@ namespace note_cli
         string Folder { get; set; }
         void WriteAllText(string fileName, string content);
         IEnumerable<string> EnumerateFiles();
+        bool FileExists(string fileName);
         void DeleteFile(string fileName);
     }
 }

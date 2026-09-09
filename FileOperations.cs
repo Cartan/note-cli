@@ -26,6 +26,11 @@ namespace note_cli
             return Directory.EnumerateFiles(Folder);
         }
 
+        public bool FileExists(string fileName)
+        {
+            return File.Exists(Path.Combine(Folder, fileName));
+        }
+
         public void DeleteFile(string fileName)
         {
             string filePath = Path.Combine(Folder, fileName);
