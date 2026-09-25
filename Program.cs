@@ -32,11 +32,17 @@ class Program
                     Console.WriteLine($"Note added with hash: {hash}");
                     break;
                 }
+                case "list":
+                {
+                    int count  = notes.List();
+                    Console.WriteLine($"Total notes: {count}");
+                    break;
+                }
             default:
                 {
                     Console.Error.WriteLine($"Unknown command: {command}");
                     return 1;
-                    break;
+  
                 }
         }
         return 0;

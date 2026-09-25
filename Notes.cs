@@ -34,4 +34,14 @@ public class Notes
             return hash;
         }
     }
+    public int List()
+    {
+        int count = 0;
+        foreach (string hash in _fileOperations.EnumerateFiles())
+        {
+            Console.WriteLine($"{++count}: {Path.GetFileName(hash)}");
+
+        }
+        return count;
+    }
 }
