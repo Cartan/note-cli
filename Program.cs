@@ -1,9 +1,44 @@
-﻿namespace note_cli;
+﻿using NoteCli;
+
+namespace NoteCli;
 
 class Program
 {
-    static void Main(string[] args)
+    public const string Folder = @".notes\db";
+    static int Main(string[] args)
     {
-        Console.WriteLine("Hello, World!");
+        IFileOperations fileOperations = new FileOperations(Folder);
+        Notes notes = new Notes(fileOperations);
+        if (args.Length == 0)
+        {
+            Console.Error.WriteLine("No command provided.");
+            Console.Error.WriteLine("Commands are add/list/delete");
+            return 1;
+        }
+        string command = args[0];
+        
+        switch (command)
+        {
+            case "add":
+                {
+
+                    if (args.Length < 2)
+                    {
+                        Console.Error.WriteLine("No note provided.");
+                        return 1;
+                    }
+                    string content = args[1];
+                    string hash = notes.Add(content);
+                    Console.WriteLine($"Note added with hash: {hash}");
+                    break;
+                }
+            default:
+                {
+                    Console.Error.WriteLine($"Unknown command: {command}");
+                    return 1;
+                    break;
+                }
+        }
+        return 0;
     }
 }
