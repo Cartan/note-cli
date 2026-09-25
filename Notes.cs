@@ -44,4 +44,8 @@ public class Notes
         }
         return count;
     }
+    public bool Delete(string hash)
+    {
+        return _fileOperations.Delete(hash);
+    }
 }

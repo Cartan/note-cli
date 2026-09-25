@@ -44,6 +44,26 @@ class Program
                     return 1;
   
                 }
+                case "delete":
+                {
+                    if (args.Length < 2)
+                    {
+                        Console.Error.WriteLine("No hash provided.");
+                        return 1;
+                    }
+                    string hash = args[1];
+                    bool deleted = notes.Delete(hash);
+                    if (deleted)
+                    {
+                        Console.WriteLine($"Note deleted.");
+                    }
+                    else
+                    {
+                        Console.Error.WriteLine($"Note not found.");
+                        return 1;
+                    }
+                    break;
+                }
         }
         return 0;
     }
