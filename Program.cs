@@ -34,7 +34,26 @@ class Program
                 Console.WriteLine($"Total notes: {count}");
                 break;
             }
-                
+            case "delete":
+            {
+                if (args.Length < 2)
+                {
+                    Console.Error.WriteLine("Usage: delete <hash>");
+                    return 1;
+                }
+                string hash = args[1];
+                bool success = notes.Delete(hash);
+                if (success)
+                {
+                    Console.WriteLine($"Note with hash {hash} deleted.");
+                }
+                else
+                {
+                    Console.Error.WriteLine($"Note with hash {hash} not found.");
+                    return 1;
+                }
+                break;
+            }
             
             default:
             {
