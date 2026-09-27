@@ -26,6 +26,16 @@ public class Notes
             return hash;
         }
     }
+    public int List()
+    {
+        int count = 0;
+        foreach (var file in _fileOperations.EnumerateFiles())
+        {
+            Console.WriteLine($"{++count}: {file}");
+        }
+        return count;
+    }
+    
 
 
 
